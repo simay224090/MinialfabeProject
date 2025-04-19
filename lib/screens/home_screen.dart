@@ -35,53 +35,17 @@ class HomeScren extends StatelessWidget {
                 mainAxisSpacing: 20,
                 crossAxisSpacing: 20,
                 children: [
-                  _buildButton(
-                    context,
-                    "Harfleri Dinleyelim",
-                    Colors.blueAccent,
-                    LettersButtonPage(),
-                  ),
-                  _buildButton(
-                    context,
-                    "Harfleri Söyleyelim",
-                    const Color.fromARGB(255, 23, 133, 36),
-                    HarfUygulamasi(),
-                  ),
-                  _buildButton(
-                    context,
-                    "Harf Testi",
-                    Colors.green[300],
-                    const HarfTestiPage(),
-                  ),
-                  _buildButton(
-                    context,
-                    "Sessiz Harfleri Öğrenelim",
-                    Colors.orange[400],
-                    SessizHarf(),
-                  ),
-                  _buildButton(
-                    context,
-                    "Sesli Harfleri Öğrenelim",
-                    Colors.purple,
-                    SesliHarf(),
-                  ),
-                  _buildButton(
-                    context,
-                    "Resimli Harfler",
-                    Colors.pinkAccent,
-                    HarfliResimOyunu(),
-                  ),
-                  _buildButton(
-                    context,
-                    "Sürükle Bırak Oyunu",
-                    Colors.teal,
-                    HarfleriSurukleBirak(),
+                  _buildButton(context, "Harfleri Dinleyelim", Colors.blueAccent,LettersButtonPage(),), 
+                  _buildButton(context, "Harfleri Söyleyelim",const Color.fromARGB(255, 23, 133, 36),HarfUygulamasi()), 
+                  _buildButton(context,"Harf Testi",  Colors.green[300],const HarfTestiPage(),),
+                  _buildButton(context,"Sessiz Harfleri Öğrenelim",  Colors.orange[400],  SessizHarf(), ),
+                  _buildButton( context,"Sesli Harfleri Öğrenelim", Colors.purple, SesliHarf(), ), _buildButton( context,"Resimli Harfler", Colors.pinkAccent,HarfliResimOyunu(), ),
+                  _buildButton( context,"Sürükle Bırak Oyunu",Colors.teal, HarfleriSurukleBirak(),
                   ),
                 ],
               ),
             ),
           ),
-          // Sol alt köşeye geri ikonunu ekleyelim
           Positioned(
             right: 20,
             bottom: 20,
@@ -101,22 +65,14 @@ class HomeScren extends StatelessWidget {
       ),
     );
   }
-
-  Widget _buildButton(
-    BuildContext context,
-    String text,
-    Color? color,
-    Widget page,
-  ) {
+  Widget _buildButton(BuildContext context, String text,Color? color, Widget page,) {
     return SizedBox(
       width: 150,
       height: 80,
       child: ElevatedButton(
         onPressed: () {
-          Navigator.push(
-            context,
-            MaterialPageRoute(builder: (context) => page),
-          );
+          Navigator.push(context,MaterialPageRoute(builder: (context) => page),
+       );
         },
         style: ElevatedButton.styleFrom(
           shape: RoundedRectangleBorder(

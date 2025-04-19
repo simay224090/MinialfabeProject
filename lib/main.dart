@@ -8,7 +8,6 @@ void main() async {
 
 class Proje extends StatelessWidget {
   const Proje({super.key});
-
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
