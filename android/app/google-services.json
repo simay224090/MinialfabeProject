@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "470518572700",
+    "project_id": "minialfabem1",
+    "storage_bucket": "minialfabem1.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:470518572700:android:2807efb1e4073070e1af59",
+        "android_client_info": {
+          "package_name": "com.ornek.mini_alfabem"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDDBk6aVZccPKEbrM99DAkgC__x1SiMAzM"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
