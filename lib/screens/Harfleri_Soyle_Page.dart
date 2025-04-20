@@ -66,145 +66,158 @@ class _HarfUygulamasiState extends State<HarfUygulamasi> {
     }
   }
 
-  @override
-  Widget build(BuildContext context) {
-    return MaterialApp(
-      debugShowCheckedModeBanner: false,
-      home: Scaffold(
-        backgroundColor: Colors.indigo[100],
-        appBar: AppBar(
-          title: const Text(
-            "Harf Eşleştirici",
-            style: TextStyle(fontWeight: FontWeight.bold),
-          ),
-          centerTitle: true,
-          backgroundColor: const Color.fromARGB(255, 149, 162, 184),
+ @override
+Widget build(BuildContext context) {
+  return MaterialApp(
+    debugShowCheckedModeBanner: false,
+    home: Scaffold(
+      backgroundColor: Colors.transparent,
+      appBar: AppBar(
+        title: const Text(
+          "Harf Eşleştirici",
+          style: TextStyle(fontWeight: FontWeight.bold),
         ),
-        body: Container(
-          decoration: const BoxDecoration(
-            image: DecorationImage(
-              image: AssetImage('assets/image/background.png'),
+        centerTitle: true,
+        backgroundColor: const Color.fromARGB(255, 149, 162, 184),
+      ),
+      body: Stack(
+        children: [
+          // Arka plan görseli tüm ekranı kaplar
+          SizedBox.expand(
+            child: Image.asset(
+              'assets/image/background.png',
               fit: BoxFit.cover,
             ),
           ),
-          child: Padding(
-            padding: const EdgeInsets.all(16.0),
-            child: Column(
-              children: [
-                const Text(
-                  "Bir harfe dokun ve söyle!",
-                  style: TextStyle(fontSize: 22, fontWeight: FontWeight.bold),
-                ),
-                const SizedBox(height: 15),
-                Expanded(
-                  child: SingleChildScrollView(
-                    child: Wrap(
-                      spacing: 12,
-                      runSpacing: 12,
-                      children: turkceHarfler.map((harf) {
-                        return GestureDetector(
-                          onTap: () {
-                            setState(() {
-                              selectedLetter = harf;
-                              spokenText = "";
-                              resultMessage = "";
-                            });
-                            startListening();
-                          },
-                          child: Container(
-                            width: 65,
-                            height: 65,
-                            decoration: BoxDecoration(
-                              color: const Color.fromARGB(255, 52, 76, 87),
-                              borderRadius: BorderRadius.circular(5),
-                              boxShadow: const [
-                                BoxShadow(
-                                  color: Colors.black26,
-                                  blurRadius: 4,
-                                  offset: Offset(2, 2),
+          SafeArea(
+            child: Padding(
+              padding: const EdgeInsets.all(16.0),
+              child: Column(
+                children: [
+                  const Text(
+                    "Bir Harfe Dokun ve Söyle !",
+                    style: TextStyle(fontFamily: 'Kids',fontSize:22, fontWeight: FontWeight.bold),
+            
+                  ),
+                  const SizedBox(height: 15),
+                  
+                  // 🔽 Harflerin ortalanması
+                  Expanded(
+                    child: Align(
+                      alignment: Alignment.center, // Harfleri yatay ve dikey ortala
+                      child: SingleChildScrollView(
+                        child: Wrap(
+                          spacing: 12,
+                          runSpacing: 12,
+                          children: turkceHarfler.map((harf) {
+                            return GestureDetector(
+                              onTap: () {
+                                setState(() {
+                                  selectedLetter = harf;
+                                  spokenText = "";
+                                  resultMessage = "";
+                                });
+                                startListening();
+                              },
+                              child: Container(
+                                width: 65,
+                                height: 65,
+                                decoration: BoxDecoration(
+                                  color: const Color.fromARGB(255, 52, 76, 87),
+                                  borderRadius: BorderRadius.circular(5),
+                                  boxShadow: const [
+                                    BoxShadow(
+                                      color: Colors.black26,
+                                      blurRadius: 4,
+                                      offset: Offset(2, 2),
+                                    ),
+                                  ],
                                 ),
-                              ],
-                            ),
-                            child: Center(
-                              child: Text(
-                                harf,
-                                style: const TextStyle(
-                                  fontSize: 28,
-                                  color: Colors.white,
-                                  fontWeight: FontWeight.bold,
+                                child: Center(
+                                  child: Text(
+                                    harf,
+                                    style: const TextStyle(
+                                      fontSize: 28,
+                                      color: Colors.white,
+                                      fontWeight: FontWeight.bold,
+                                    ),
+                                  ),
                                 ),
                               ),
-                            ),
-                          ),
-                        );
-                      }).toList(),
+                            );
+                          }).toList(),
+                        ),
+                      ),
                     ),
                   ),
-                ),
-                const SizedBox(height: 20),
-                ElevatedButton.icon(
-                  onPressed: stopListeningAndCheck,
-                  icon: const Icon(Icons.stop_circle_outlined),
-                  label: const Text("Konuşmayı Bitir"),
-                  style: ElevatedButton.styleFrom(
-                    padding: const EdgeInsets.symmetric(
-                        horizontal: 25, vertical: 15),
-                    backgroundColor: Colors.pink[100],
-                    textStyle: const TextStyle(fontSize: 18),
+
+                  const SizedBox(height: 20),
+                  ElevatedButton.icon(
+                    onPressed: stopListeningAndCheck,
+                    icon: const Icon(Icons.stop_circle_outlined),
+                    label: const Text("Konuşmayı Bitir"),
+                    style: ElevatedButton.styleFrom(
+                      padding: const EdgeInsets.symmetric(horizontal: 25, vertical: 15),
+                      backgroundColor: Colors.pink[100],
+                      textStyle: const TextStyle(fontSize: 18),
+                      shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.zero,
+                      ),
+                    ),
+                  ),
+                  const SizedBox(height: 20),
+
+                  // 🔽 Doğru/yanlış sonucu her zaman görünür
+                  Card(
+                    color: Colors.white,
+                    elevation: 4,
                     shape: RoundedRectangleBorder(
-                      borderRadius: BorderRadius.zero,
+                      borderRadius: BorderRadius.circular(15),
+                    ),
+                    child: Padding(
+                      padding: const EdgeInsets.all(16.0),
+                      child: Column(
+                        children: [
+                          Text(
+                            "Seçilen Harf: $selectedLetter",
+                            style: const TextStyle(fontSize: 20),
+                          ),
+                          const SizedBox(height: 10),
+                          Text(
+                            "Söylediğin Harf: $spokenText",
+                            style: const TextStyle(fontSize: 20),
+                          ),
+                          const SizedBox(height: 10),
+                          Text(
+                            resultMessage,
+                            style: const TextStyle(fontSize: 18),
+                          ),
+                        ],
+                      ),
                     ),
                   ),
-                ),
-                const SizedBox(height: 20),
-                Card(
-                  color: Colors.white,
-                  elevation: 4,
-                  shape: RoundedRectangleBorder(
-                    borderRadius: BorderRadius.circular(15),
-                  ),
-                  child: Padding(
-                    padding: const EdgeInsets.all(16.0),
-                    child: Column(
-                      children: [
-                        Text(
-                          "Seçilen Harf: $selectedLetter",
-                          style: const TextStyle(fontSize: 20),
-                        ),
-                        const SizedBox(height: 10),
-                        Text(
-                          "Söylediğin Harf: $spokenText",
-                          style: const TextStyle(fontSize: 20),
-                        ),
-                        const SizedBox(height: 10),
-                        Text(
-                          resultMessage,
-                          style: const TextStyle(fontSize: 18),
-                        ),
-                      ],
-                    ),
-                  ),
-                ),
-                const SizedBox(height: 10),
-              ],
+                  const SizedBox(height: 10),
+                ],
+              ),
             ),
           ),
-        ),
-        floatingActionButton: FloatingActionButton(
-          backgroundColor: Colors.transparent,
-          elevation: 0,
-          onPressed: () {
-            Navigator.pushReplacement(
-              context,
-              MaterialPageRoute(builder: (context) => const HomeScren()),
-            );
-          },
-          child: const Icon(
-            Icons.arrow_back_ios_new,
-            color: Colors.white,
-          ),
+        ],
+      ),
+      floatingActionButton: FloatingActionButton(
+        backgroundColor: Colors.transparent,
+        elevation: 0,
+        onPressed: () {
+          Navigator.pushReplacement(
+            context,
+            MaterialPageRoute(builder: (context) => const HomeScren()),
+          );
+        },
+        child: const Icon(
+          Icons.arrow_back_ios_new,
+          color: Colors.black,
         ),
       ),
-    );
-  }
+    ),
+  );
+}
 }

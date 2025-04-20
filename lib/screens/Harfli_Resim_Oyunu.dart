@@ -1,3 +1,4 @@
+// ignore: file_names
 import 'dart:math';
 import 'package:flutter/material.dart';
 
@@ -5,6 +6,7 @@ class HarfliResimOyunu extends StatefulWidget {
   const HarfliResimOyunu({super.key});
 
   @override
+  // ignore: library_private_types_in_public_api
   _HarfliResimOyunuState createState() => _HarfliResimOyunuState();
 }
 
@@ -14,6 +16,11 @@ class _HarfliResimOyunuState extends State<HarfliResimOyunu>
     {"image": "assets/images/apple.png", "letter": "E"},
     {"image": "assets/images/car.png", "letter": "A"},
     {"image": "assets/images/karpuz.png", "letter": "K"},
+    {"image": "assets/images/zürafa.png", "letter": "Z"},
+    {"image": "assets/images/cilek.png", "letter": "Ç"},
+    {"image": "assets/images/rainbow.png", "letter": "G"},
+    {"image": "assets/images/fish.png", "letter": "B"},
+    {"image": "assets/images/dog.png", "letter": "K"},
   ];
 
   Map<String, dynamic>? _currentImage;
@@ -59,7 +66,7 @@ class _HarfliResimOyunuState extends State<HarfliResimOyunu>
 
     setState(() {
       if (_userGuess.toUpperCase() == _currentImage!['letter']) {
-        _message = "🎉 Tebrikler! Doğru bildiniz.";
+        _message = "🎉 Tebrikler! Dogru bildiniz.";
         _isCorrect = true;
         _showFeedback = true;
         _controller.forward().then((_) {
@@ -72,7 +79,7 @@ class _HarfliResimOyunuState extends State<HarfliResimOyunu>
           });
         });
       } else {
-        _message = "❌ Yanlış, tekrar deneyin.";
+        _message = "❌ Yanlis, tekrar deneyin.";
         _isCorrect = false;
         _showFeedback = true;
         _controller.forward().then((_) {
@@ -91,7 +98,14 @@ class _HarfliResimOyunuState extends State<HarfliResimOyunu>
  @override
 Widget build(BuildContext context) {
   return Scaffold(
-    appBar: AppBar(title: const Text("Harfli Resim Oyunu")),
+    appBar: AppBar(title: const Text("Resimli Harf Oyunu"),
+    centerTitle: true,
+    titleTextStyle: TextStyle(
+      fontFamily:'Kids',
+      fontSize: 24,
+      color:Colors.black
+
+    ),),
     body: Container(
       decoration: BoxDecoration(
         image: DecorationImage(
@@ -115,8 +129,8 @@ Widget build(BuildContext context) {
                   ),
                   const SizedBox(height: 20),
                   const Text(
-                    "Hangi harf ile başlıyor?",
-                    style: TextStyle(fontSize: 20),
+                    "Bas Harfini Tahmin Et?",
+                    style: TextStyle(fontFamily:'Kids',fontSize:  20,),
                   ),
                   const SizedBox(height: 20),
                   SizedBox(
@@ -163,7 +177,7 @@ Widget build(BuildContext context) {
                     style: const TextStyle(fontSize: 24, fontWeight: FontWeight.bold),
                   ),
                 ],
-              ),
+              )
       ),
     ),
   );

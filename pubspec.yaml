@@ -70,11 +70,15 @@ flutter:
   uses-material-design: true
 
   assets:
-
+   
    - assets/music/music.mp3
    - assets/images/car.png
    - assets/images/apple.png
    - assets/images/karpuz.png
+   - assets/images/dog.png
+   - assets/images/zürafa.png
+   - assets/images/rainbow.png
+   - assets/images/fish.png
    - assets/image/anasayfa.png
    - assets/image/background.png
    - assets/image/harftest.png
@@ -156,6 +160,12 @@ flutter:
     - family: MyFont
       fonts:
         - asset: assets/fonts/font.ttf
+
+
+    - family: Kids
+      fonts:
+        - asset: assets/fonts/kidsfont.ttf
+      
 
   # To add assets to your application, add an assets section, like this:
   # assets:

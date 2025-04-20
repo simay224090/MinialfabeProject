@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:xyz/screens/Game.dart';
+import 'package:xyz/screens/game.dart';
 import 'package:xyz/screens/Harfleri_Soyle_Page.dart';
 import 'package:xyz/screens/giris.dart';
 import 'package:xyz/screens/harf_testi_page.dart';
@@ -58,7 +58,7 @@ class HomeScren extends StatelessWidget {
               },
               backgroundColor: Colors.transparent,
               elevation: 0,
-              child: const Icon(Icons.arrow_back_ios, color: Colors.white),
+              child: const Icon(Icons.arrow_back_ios, color: Colors.black),
             ),
           ),
         ],
@@ -67,8 +67,8 @@ class HomeScren extends StatelessWidget {
   }
   Widget _buildButton(BuildContext context, String text,Color? color, Widget page,) {
     return SizedBox(
-      width: 150,
-      height: 80,
+      width: 110,
+      height: 55,
       child: ElevatedButton(
         onPressed: () {
           Navigator.push(context,MaterialPageRoute(builder: (context) => page),

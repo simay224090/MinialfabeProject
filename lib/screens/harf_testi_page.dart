@@ -6,6 +6,7 @@ class HarfTestiPage extends StatefulWidget {
   const HarfTestiPage({super.key});
 
   @override
+  // ignore: library_private_types_in_public_api
   _HarfTestiPageState createState() => _HarfTestiPageState();
 }
 
@@ -130,7 +131,7 @@ class _HarfTestiPageState extends State<HarfTestiPage> {
                   shadows: [Shadow(color: Colors.black87, blurRadius: 5)],
                   fontSize: 30,
                   fontWeight: FontWeight.bold,
-                  fontFamily: 'MyFont',
+                  fontFamily: 'Kids',
                   color: Color.fromARGB(255, 17, 17, 14),
                 ),
               ),

@@ -32,7 +32,13 @@ class SesliHarf extends StatelessWidget {
     ];
 
     return Scaffold(
-      appBar: AppBar(title: const Text('Harf Dinleme')),
+      appBar: AppBar(title: const Text('Harf Dinleme'),
+      centerTitle: true,
+      titleTextStyle: TextStyle(
+        fontFamily: 'Kids',
+        fontSize: 24,
+        color:Colors.black
+      ),),
       body: Container(
         decoration: const BoxDecoration(
           image: DecorationImage(

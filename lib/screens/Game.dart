@@ -5,6 +5,7 @@ class HarfleriSurukleBirak extends StatefulWidget {
   const HarfleriSurukleBirak({super.key});
 
   @override
+  // ignore: library_private_types_in_public_api
   _HarfleriSurukleBirakState createState() => _HarfleriSurukleBirakState();
 }
 
@@ -44,7 +45,13 @@ class _HarfleriSurukleBirakState extends State<HarfleriSurukleBirak> {
  @override
 Widget build(BuildContext context) {
   return Scaffold(
-    appBar: AppBar(title: Text("Harfleri Sürükle ve Bırak")),
+    appBar: AppBar(title: Text("Harfleri Sürükle ve Bırak"),
+    centerTitle: true,
+    titleTextStyle: TextStyle(
+      fontFamily: 'Kids',
+      fontSize: 24,
+      color:Colors.black
+    ),),
     body: Container(
       decoration: BoxDecoration(
         // Renkli arka plan (dilersen değiştirebilirsin)
@@ -101,7 +108,7 @@ Widget build(BuildContext context) {
             Draggable<String>(
               data: draggedLetter,
               feedback: Material(
-                color: Colors.transparent,
+                color: const Color.fromARGB(197, 181, 36, 192),
                 child: Text(draggedLetter, style: TextStyle(fontSize: 30, fontWeight: FontWeight.bold)),
               ),
               childWhenDragging: Container(),

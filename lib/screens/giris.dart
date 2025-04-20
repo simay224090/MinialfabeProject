@@ -45,6 +45,7 @@ class _GirisEkraniState extends State<GirisEkrani> with TickerProviderStateMixin
     // 50 saniye sonra ana menüye geç
     Future.delayed(Duration(seconds: 50), () {
       Navigator.pushReplacement(
+        // ignore: use_build_context_synchronously
         context,
         MaterialPageRoute(builder: (context) => HomeScren()),
       );

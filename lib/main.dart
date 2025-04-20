@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'screens/giris.dart';
 
 void main() async {
-  // Firebase başlatılıyor
   runApp(const Proje());
 }
 
